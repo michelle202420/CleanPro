@@ -15,3 +15,8 @@ variable "project_name" {
   type        = string
   default     = "CleanPro"
 }
+
+variable "ami_id" {
+  description = "Amazon Linux AMI ID in the selected AWS region"
+  type        = string
+}
