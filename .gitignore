@@ -134,3 +134,11 @@ Desktop.ini
 tmp/
 temp/
 *.tmp
+# Local database backups
+backups/
+
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfplan
