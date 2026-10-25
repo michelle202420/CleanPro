@@ -1,0 +1,531 @@
+/* Quote Builder Specific Styles */
+
+.quote-builder-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.page-header p {
+    color: white;
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.quote-form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.form-card h3 {
+    margin: 0 0 1.5rem 0;
+    color: #2c3e50;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.card-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.card-header-flex h3 {
+    margin: 0;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #34495e;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.form-group input[readonly] {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+/* Service Line Styles */
+.service-line {
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.service-line-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.service-line-number {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.remove-service-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+.remove-service-btn:hover {
+    background: #c0392b;
+}
+
+.service-line-grid {
+    display: grid;
+    grid-template-columns: 2fr 3fr 1fr 1fr 1fr 1fr;
+    gap: 0.75rem;
+    align-items: start;
+}
+
+.line-total {
+    font-weight: 600;
+    color: #27ae60;
+    padding: 0.75rem;
+    background: white;
+    border-radius: 4px;
+    text-align: right;
+}
+
+/* Pricing Card */
+.pricing-card {
+    background: #f8f9fa;
+    border: 2px solid #3498db;
+}
+
+.pricing-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 400px;
+    margin-left: auto;
+}
+
+.pricing-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+.pricing-row label {
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.pricing-row span {
+    font-weight: 600;
+    color: #27ae60;
+    font-size: 1.1rem;
+}
+
+.pricing-row input {
+    width: 100px;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: right;
+}
+
+.total-row {
+    border-top: 2px solid #2c3e50;
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+}
+
+.total-row label {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.total-row span {
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
+
+/* Quote Preview Styles */
+.quote-preview-content {
+    background: white;
+    padding: 1.5rem;
+    max-width: 210mm; /* A4 width */
+    margin: 0 auto;
+    font-family: 'Arial', sans-serif;
+    font-size: 10px;
+    line-height: 1.3;
+}
+
+.preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #3498db;
+}
+
+.preview-company {
+    flex: 1;
+}
+
+.preview-company h1 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+.preview-company p {
+    margin: 0.1rem 0;
+    color: #7f8c8d;
+    font-size: 9px;
+    line-height: 1.2;
+}
+
+.preview-quote-info {
+    text-align: right;
+}
+
+.preview-quote-info h2 {
+    margin: 0 0 0.2rem 0;
+    color: #3498db;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.preview-quote-info p {
+    margin: 0.1rem 0;
+    color: #2c3e50;
+    font-size: 9px;
+    line-height: 1.2;
+}
+
+.preview-customer {
+    background: #f8f9fa;
+    padding: 0.75rem;
+    border-radius: 3px;
+    margin-bottom: 1rem;
+}
+
+.preview-customer h3 {
+    margin: 0 0 0.4rem 0;
+    color: #2c3e50;
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+.preview-customer p {
+    margin: 0.1rem 0;
+    color: #34495e;
+    font-size: 10px;
+    line-height: 1.2;
+}
+
+.preview-services {
+    margin-bottom: 1rem;
+}
+
+.preview-services h3 {
+    margin: 0 0 0.5rem 0;
+    color: #2c3e50;
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+.services-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0.75rem;
+    font-size: 10px;
+}
+
+.services-table th {
+    background: #34495e;
+    color: white;
+    padding: 0.35rem 0.4rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 1.2;
+}
+
+.services-table td {
+    padding: 0.3rem 0.4rem;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 10px;
+    line-height: 1.2;
+}
+
+.services-table tr:last-child td {
+    border-bottom: none;
+}
+
+.services-table .text-right {
+    text-align: right;
+}
+
+.services-table .text-center {
+    text-align: center;
+}
+
+.preview-totals {
+    margin-left: auto;
+    max-width: 300px;
+    background: #f8f9fa;
+    padding: 0.75rem;
+    border-radius: 3px;
+    margin-bottom: 1rem;
+}
+
+.preview-totals-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.2rem 0;
+    font-size: 10px;
+    line-height: 1.2;
+}
+
+.preview-totals-row.total {
+    border-top: 2px solid #2c3e50;
+    margin-top: 0.2rem;
+    padding-top: 0.4rem;
+    font-weight: 700;
+    font-size: 11px;
+}
+
+.preview-notes {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #e0e0e0;
+    margin-bottom: 1rem;
+}
+
+.preview-notes h3 {
+    margin: 0 0 0.4rem 0;
+    color: #2c3e50;
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+.preview-notes p {
+    margin: 0.25rem 0;
+    color: #34495e;
+    font-size: 10px;
+    line-height: 1.3;
+}
+
+.preview-notes strong {
+    color: #2c3e50;
+}
+
+.preview-sales-rep {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #e0e0e0;
+    background: #f8f9fa;
+    padding: 0.75rem;
+    border-radius: 3px;
+}
+
+.preview-sales-rep h3 {
+    margin: 0 0 0.4rem 0;
+    color: #2c3e50;
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+.preview-sales-rep p {
+    margin: 0.2rem 0;
+    color: #34495e;
+    font-size: 10px;
+    line-height: 1.2;
+}
+
+.preview-sales-rep strong {
+    color: #3498db;
+    font-size: 10px;
+}
+
+/* Modal Styles */
+.modal-xlarge .modal-content {
+    max-width: 95%;
+    width: 1200px;
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+    }
+    
+    .admin-nav,
+    .modal-header,
+    .modal-footer,
+    .header-actions,
+    button {
+        display: none !important;
+    }
+    
+    .quote-preview-content {
+        padding: 0;
+        box-shadow: none;
+    }
+    
+    /* Prevent page breaks inside these elements */
+    .preview-header,
+    .preview-customer,
+    .preview-services h3,
+    .preview-totals,
+    .preview-notes,
+    .preview-sales-rep,
+    .services-table thead,
+    .services-table tr {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    
+    /* Keep table rows together */
+    .services-table {
+        page-break-inside: auto;
+    }
+    
+    .services-table tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+    }
+    
+    /* Ensure sections stay together */
+    .preview-customer,
+    .preview-totals,
+    .preview-sales-rep {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    
+    /* Add page break before notes if needed */
+    .preview-notes {
+        page-break-before: auto;
+        page-break-inside: avoid;
+    }
+    
+    @page {
+        size: A4;
+        margin: 15mm;
+    }
+}
+
+/* Page break rules for PDF generation */
+.preview-header,
+.preview-customer,
+.preview-totals,
+.preview-notes,
+.preview-sales-rep {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.services-table tr {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service-line-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .header-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .header-actions button {
+        width: 100%;
+    }
+}
+
+/* Hide VAT details in PDF export */
+.hide-in-pdf {
+    /* Visible on screen by default */
+}
+
+/* When capturing for PDF, hide these elements */
+@media print {
+    .hide-in-pdf {
+        display: none !important;
+    }
+}
+
+/* Made with Bob */

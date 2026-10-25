@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prospects - CleanPro Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body">
+    <!-- Admin Navigation -->
+    <nav class="admin-nav">
+        <div class="admin-nav-container">
+            <div class="admin-logo">
+                <h2>🧹 CleanPro Admin</h2>
+            </div>
+            <ul class="admin-menu">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="quotes.html">Quotes</a></li>
+                <li><a href="customers.html">Customers</a></li>
+                <li><a href="prospects.html" class="active">Prospects</a></li>
+                <li><a href="quote-builder.html">Quote Builder</a></li>
+            </ul>
+            <div class="admin-user">
+                <span id="adminName">Admin</span>
+                <button id="logoutBtn" class="btn btn-secondary btn-small">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <div class="admin-container">
+            <!-- Page Header -->
+            <div class="page-header page-header-centered">
+                <div style="text-align: center;">
+                    <h1>Marketing Prospects</h1>
+                    <p>Track companies you're targeting for business</p>
+                </div>
+            </div>
+
+            <!-- Action Button -->
+            <div style="margin-bottom: 1.5rem; text-align: right;">
+                <button id="addProspectBtn" class="btn btn-primary" style="font-size: 1rem; padding: 0.75rem 1.5rem;">
+                    ➕ Add New Prospect
+                </button>
+            </div>
+
+            <!-- Sales Funnel Stats -->
+            <div class="stats-grid" id="funnelStats">
+                <div class="stat-card">
+                    <div class="stat-icon">🆕</div>
+                    <div class="stat-content">
+                        <h3 id="newCount">0</h3>
+                        <p>New</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📞</div>
+                    <div class="stat-content">
+                        <h3 id="contactedCount">0</h3>
+                        <p>Contacted</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💡</div>
+                    <div class="stat-content">
+                        <h3 id="interestedCount">0</h3>
+                        <p>Interested</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📄</div>
+                    <div class="stat-content">
+                        <h3 id="proposalCount">0</h3>
+                        <p>Proposal Sent</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🤝</div>
+                    <div class="stat-content">
+                        <h3 id="negotiationCount">0</h3>
+                        <p>Negotiation</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-content">
+                        <h3 id="wonCount">0</h3>
+                        <p>Won</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters-card">
+                <div class="filters-grid">
+                    <div class="filter-group">
+                        <label for="stageFilter">Stage</label>
+                        <select id="stageFilter" class="filter-select">
+                            <option value="">All Stages</option>
+                            <option value="new">New</option>
+                            <option value="contacted">Contacted</option>
+                            <option value="interested">Interested</option>
+                            <option value="proposal_sent">Proposal Sent</option>
+                            <option value="negotiation">Negotiation</option>
+                            <option value="won">Won</option>
+                            <option value="lost">Lost</option>
+                            <option value="on_hold">On Hold</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="priorityFilter">Priority</label>
+                        <select id="priorityFilter" class="filter-select">
+                            <option value="">All Priorities</option>
+                            <option value="urgent">Urgent</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="searchInput">Search</label>
+                        <input type="text" id="searchInput" class="filter-input" placeholder="Company name, city...">
+                    </div>
+                    <div class="filter-group">
+                        <label>&nbsp;</label>
+                        <button id="applyFilters" class="btn btn-primary">Apply Filters</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Follow-ups Needed -->
+            <div class="data-card" id="followUpsCard" style="display: none;">
+                <div class="card-header" style="background-color: #fef3c7;">
+                    <h3>⏰ Follow-ups Needed</h3>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Stage</th>
+                                <th>Priority</th>
+                                <th>Follow-up Date</th>
+                                <th>Last Contact</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="followUpsTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Prospects Table -->
+            <div class="data-card">
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Industry</th>
+                                <th>City</th>
+                                <th>Stage</th>
+                                <th>Priority</th>
+                                <th>Contacts</th>
+                                <th>Last Contact</th>
+                                <th>Next Follow-up</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="prospectsTable">
+                            <tr>
+                                <td colspan="9" class="text-center">
+                                    <div class="loading-spinner">Loading prospects...</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Prospect Modal -->
+    <div id="addProspectModal" class="modal" style="display: none;">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>Add New Prospect</h2>
+                <button class="modal-close" id="closeAddModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addProspectForm">
+                    <div class="quote-detail-grid">
+                        <div class="form-group">
+                            <label for="legalName">Legal Name *</label>
+                            <input type="text" id="legalName" name="legalName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tradeName">Trade Name</label>
+                            <input type="text" id="tradeName" name="tradeName">
+                        </div>
+                        <div class="form-group">
+                            <label for="industry">Industry</label>
+                            <input type="text" id="industry" name="industry" placeholder="e.g., Retail, Office, Healthcare">
+                        </div>
+                        <div class="form-group">
+                            <label for="companySize">Company Size</label>
+                            <select id="companySize" name="companySize">
+                                <option value="">Select size</option>
+                                <option value="small">Small (1-50)</option>
+                                <option value="medium">Medium (51-250)</option>
+                                <option value="large">Large (251-1000)</option>
+                                <option value="enterprise">Enterprise (1000+)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="website">Website</label>
+                            <input type="url" id="website" name="website" placeholder="https://...">
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city">
+                        </div>
+                        <div class="form-group">
+                            <label for="source">Source</label>
+                            <select id="source" name="source">
+                                <option value="">How did you find them?</option>
+                                <option value="referral">Referral</option>
+                                <option value="cold_call">Cold Call</option>
+                                <option value="website">Website</option>
+                                <option value="linkedin">LinkedIn</option>
+                                <option value="event">Event</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea id="address" name="address" rows="2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Notes</label>
+                        <textarea id="notes" name="notes" rows="3" placeholder="Any additional information..."></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="cancelAdd">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Add Prospect</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Prospect Detail Modal -->
+    <div id="prospectModal" class="modal" style="display: none;">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>Prospect Details</h2>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body" id="prospectDetails">
+                <div class="loading-spinner">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/admin-prospects.js?v=3"></script>
+</body>
+</html>

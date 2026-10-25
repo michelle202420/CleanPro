@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers - CleanPro Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body">
+    <!-- Admin Navigation -->
+    <nav class="admin-nav">
+        <div class="admin-nav-container">
+            <div class="admin-logo">
+                <h2>🧹 CleanPro Admin</h2>
+            </div>
+            <ul class="admin-menu">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="quotes.html">Quotes</a></li>
+                <li><a href="customers.html" class="active">Customers</a></li>
+                <li><a href="prospects.html">Prospects</a></li>
+                <li><a href="quote-builder.html">Quote Builder</a></li>
+            </ul>
+            <div class="admin-user">
+                <span id="adminName">Admin</span>
+                <button id="logoutBtn" class="btn btn-secondary btn-small">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <div class="admin-container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>Customers</h1>
+                <p>View and manage customer information</p>
+            </div>
+
+            <!-- Search -->
+            <div class="filters-card">
+                <div class="filters-grid">
+                    <div class="filter-group" style="grid-column: 1 / -1;">
+                        <label for="searchInput">Search Customers</label>
+                        <input type="text" id="searchInput" class="filter-input" placeholder="Search by name, email, or company...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customers Table -->
+            <div class="data-card">
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Company</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Quotes</th>
+                                <th>Joined</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customersTable">
+                            <tr>
+                                <td colspan="7" class="text-center">
+                                    <div class="loading-spinner">Loading customers...</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/admin-customers.js?v=4"></script>
+</body>
+</html>

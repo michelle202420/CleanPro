@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - CleanPro</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body">
+    <!-- Admin Navigation -->
+    <nav class="admin-nav">
+        <div class="admin-nav-container">
+            <div class="admin-logo">
+                <h2>🧹 CleanPro Admin</h2>
+            </div>
+            <ul class="admin-menu">
+                <li><a href="index.html" class="active">Dashboard</a></li>
+                <li><a href="quotes.html">Quotes</a></li>
+                <li><a href="customers.html">Customers</a></li>
+                <li><a href="prospects.html">Prospects</a></li>
+                <li><a href="quote-builder.html">Quote Builder</a></li>
+            </ul>
+            <div class="admin-user">
+                <span id="adminName">Admin</span>
+                <button id="logoutBtn" class="btn btn-secondary btn-small">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <div class="admin-container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>Dashboard</h1>
+                <p>Overview of quote requests and statistics</p>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="stats-grid" id="statsGrid">
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-content">
+                        <h3 id="totalQuotes">0</h3>
+                        <p>Total Quotes</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⏳</div>
+                    <div class="stat-content">
+                        <h3 id="pendingQuotes">0</h3>
+                        <p>Pending</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📞</div>
+                    <div class="stat-content">
+                        <h3 id="contactedQuotes">0</h3>
+                        <p>Contacted</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-content">
+                        <h3 id="acceptedQuotes">0</h3>
+                        <p>Accepted</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-content">
+                        <h3 id="todayQuotes">0</h3>
+                        <p>Today</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-content">
+                        <h3 id="weekQuotes">0</h3>
+                        <p>This Week</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>Quotes by Status</h3>
+                    <div id="statusChart" class="chart-container"></div>
+                </div>
+                <div class="chart-card">
+                    <h3>Quotes by Service Type</h3>
+                    <div id="serviceChart" class="chart-container"></div>
+                </div>
+            </div>
+
+            <!-- Recent Quotes -->
+            <div class="data-card">
+                <div class="card-header">
+                    <h3>Recent Quote Requests</h3>
+                    <a href="quotes.html" class="btn btn-secondary btn-small">View All</a>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Quote #</th>
+                                <th>Customer</th>
+                                <th>Service</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentQuotesTable">
+                            <tr>
+                                <td colspan="6" class="text-center">
+                                    <div class="loading-spinner">Loading...</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/admin-dashboard.js?v=9"></script>
+</body>
+</html>

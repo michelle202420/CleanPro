@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Management - CleanPro Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body">
+    <!-- Admin Navigation -->
+    <nav class="admin-nav">
+        <div class="admin-nav-container">
+            <div class="admin-logo">
+                <h2>🧹 CleanPro Admin</h2>
+            </div>
+            <ul class="admin-menu">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="quotes.html" class="active">Quotes</a></li>
+                <li><a href="customers.html">Customers</a></li>
+                <li><a href="prospects.html">Prospects</a></li>
+                <li><a href="quote-builder.html">Quote Builder</a></li>
+            </ul>
+            <div class="admin-user">
+                <span id="adminName">Admin</span>
+                <button id="logoutBtn" class="btn btn-secondary btn-small">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <div class="admin-container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div>
+                    <h1>Quote Requests</h1>
+                    <p>Manage and track all quote requests</p>
+                </div>
+                <button id="createQuoteBtn" class="btn btn-primary">
+                    <span>➕ Create New Quote</span>
+                </button>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters-card">
+                <div class="filters-grid">
+                    <div class="filter-group">
+                        <label for="statusFilter">Status</label>
+                        <select id="statusFilter" class="filter-select">
+                            <option value="">All Statuses</option>
+                            <option value="pending">Pending</option>
+                            <option value="contacted">Contacted</option>
+                            <option value="quoted">Quoted</option>
+                            <option value="accepted">Accepted</option>
+                            <option value="rejected">Rejected</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="serviceFilter">Service Type</label>
+                        <select id="serviceFilter" class="filter-select">
+                            <option value="">All Services</option>
+                            <option value="office">Office Cleaning</option>
+                            <option value="retail">Retail Cleaning</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="searchInput">Search</label>
+                        <input type="text" id="searchInput" class="filter-input" placeholder="Name, email, quote #...">
+                    </div>
+                    <div class="filter-group">
+                        <label>&nbsp;</label>
+                        <button id="applyFilters" class="btn btn-primary">Apply Filters</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quotes Table -->
+            <div class="data-card">
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Quote #</th>
+                                <th>Customer</th>
+                                <th>Company</th>
+                                <th>Service</th>
+                                <th>Frequency</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="quotesTable">
+                            <tr>
+                                <td colspan="8" class="text-center">
+                                    <div class="loading-spinner">Loading quotes...</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination" id="pagination"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Quote Detail Modal -->
+    <div id="quoteModal" class="modal" style="display: none;">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>Quote Details</h2>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body" id="quoteDetails">
+                <div class="loading-spinner">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Status Modal -->
+    <div id="updateStatusModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Update Quote Status</h2>
+                <button class="modal-close" id="closeStatusModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="updateStatusForm">
+                    <div class="form-group">
+                        <label for="quoteNumberDisplay">Quote Number</label>
+                        <input type="text" id="quoteNumberDisplay" readonly style="background: #f5f5f5;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="currentStatusDisplay">Current Status</label>
+                        <input type="text" id="currentStatusDisplay" readonly style="background: #f5f5f5;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="newStatus">New Status *</label>
+                        <select id="newStatus" name="newStatus" required class="filter-select">
+                            <option value="">Select new status...</option>
+                            <option value="pending">Pending</option>
+                            <option value="contacted">Contacted</option>
+                            <option value="quoted">Quoted</option>
+                            <option value="accepted">Accepted</option>
+                            <option value="rejected">Rejected</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="statusNotes">Notes (Optional)</label>
+                        <textarea id="statusNotes" name="statusNotes" rows="3" placeholder="Add any notes about this status change..."></textarea>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="cancelStatusUpdate">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Update Status</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/admin-quotes.js?v=6"></script>
+</body>
+</html>

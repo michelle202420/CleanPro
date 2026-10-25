@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Builder - CleanPro Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/quote-builder.css?v=10">
+</head>
+<body class="admin-body">
+    <!-- Admin Navigation -->
+    <nav class="admin-nav">
+        <div class="admin-nav-container">
+            <div class="admin-logo">
+                <h2>🧹 CleanPro Admin</h2>
+            </div>
+            <ul class="admin-menu">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="quotes.html">Quotes</a></li>
+                <li><a href="customers.html">Customers</a></li>
+                <li><a href="prospects.html">Prospects</a></li>
+                <li><a href="quote-builder.html" class="active">Quote Builder</a></li>
+            </ul>
+            <div class="admin-user">
+                <span id="adminName">Admin</span>
+                <button id="logoutBtn" class="btn btn-secondary btn-small">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <div class="quote-builder-container">
+            <!-- Page Header -->
+            <div class="page-header page-header-centered">
+                <div style="text-align: center; flex: 1;">
+                    <h1>Professional Quote Builder</h1>
+                    <p>Create detailed quotes for cleaning services</p>
+                </div>
+                <div class="header-actions" style="position: absolute; right: 0;">
+                    <button id="previewBtn" class="btn btn-secondary">👁️ Preview</button>
+                    <button id="exportPdfBtn" class="btn btn-primary">📄 Export to PDF</button>
+                </div>
+            </div>
+
+            <!-- Quote Form -->
+            <div class="quote-form-section">
+                <!-- Customer Information -->
+                <div class="form-card">
+                    <h3>Customer Information</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="companyName">Company Name *</label>
+                            <input type="text" id="companyName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPerson">Contact Person *</label>
+                            <input type="text" id="contactPerson" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerEmail">Email *</label>
+                            <input type="email" id="customerEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerPhone">Phone Number *</label>
+                            <input type="tel" id="customerPhone" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quote Details -->
+                <div class="form-card">
+                    <h3>Quote Details</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="quoteNumber">Quote Number</label>
+                            <input type="text" id="quoteNumber" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="quoteDate">Quote Date *</label>
+                            <input type="date" id="quoteDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="expirationDate">Expiration Date</label>
+                            <input type="date" id="expirationDate" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services Section -->
+                <div class="form-card">
+                    <div class="card-header-flex">
+                        <h3>Services</h3>
+                        <button id="addServiceBtn" class="btn btn-secondary btn-small">+ Add Service</button>
+                    </div>
+                    <div id="servicesContainer">
+                        <!-- Service lines will be added here dynamically -->
+                    </div>
+                </div>
+
+                <!-- Pricing Section -->
+                <div class="form-card pricing-card">
+                    <h3>Pricing</h3>
+                    <div class="pricing-grid">
+                        <div class="pricing-row hide-in-pdf">
+                            <label>Net Amount (excl. VAT):</label>
+                            <span id="subtotal">€0.00</span>
+                        </div>
+                        <div class="pricing-row hide-in-pdf">
+                            <label for="vatRate">VAT %:</label>
+                            <input type="number" id="vatRate" value="20" min="0" max="100" step="0.1">
+                        </div>
+                        <div class="pricing-row hide-in-pdf">
+                            <label>VAT Amount:</label>
+                            <span id="vatAmount">€0.00</span>
+                        </div>
+                        <div class="pricing-row total-row">
+                            <label>Total:</label>
+                            <span id="grandTotal">€0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sales Representative Information -->
+                <div class="form-card">
+                    <h3>Sales Representative</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="salesRepName">Name *</label>
+                            <input type="text" id="salesRepName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="salesRepEmail">Email *</label>
+                            <input type="email" id="salesRepEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="salesRepPhone">Phone *</label>
+                            <input type="tel" id="salesRepPhone" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notes Section -->
+                <div class="form-card">
+                    <h3>Notes & Terms</h3>
+                    <div class="form-group">
+                        <label for="paymentTerms">Payment Terms</label>
+                        <textarea id="paymentTerms" rows="2" placeholder="e.g., Payment due within 5 days of invoice date">Payment due within 5 days of invoice date</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="validityNote">Validity Note</label>
+                        <textarea id="validityNote" rows="2" placeholder="e.g., This quote is valid for 30 days">This quote is valid for 30 days from the date of issue</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="additionalComments">Additional Comments</label>
+                        <textarea id="additionalComments" rows="3" placeholder="Any additional information or special conditions"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Preview Modal -->
+    <div id="previewModal" class="modal" style="display: none;">
+        <div class="modal-content modal-xlarge">
+            <div class="modal-header">
+                <h2>Quote Preview</h2>
+                <button class="modal-close" id="closePreview">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="quotePreview" class="quote-preview-content">
+                    <!-- Preview will be generated here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="closePreviewBtn" class="btn btn-secondary">Close</button>
+                <button id="exportFromPreviewBtn" class="btn btn-primary">📄 Export to PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="../js/quote-builder.js?v=10"></script>
+</body>
+</html>
