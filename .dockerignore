@@ -1,11 +1,22 @@
-
+# Node.js dependencies
 node_modules/
 npm-debug.log
+*.log
+
+# Environment variables and secrets
 .env
 .env.*
 !.env.example
+
+# Git files
 .git/
 .github/
+
+# Backup files
 backups/
-*.log
+
+# Terraform local files
+terraform/.terraform/
+
+# macOS files
 .DS_Store
