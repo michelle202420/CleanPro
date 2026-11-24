@@ -5,6 +5,14 @@ const path = require('path');
 require('dotenv').config();
 
 const DB_PATH = process.env.DB_PATH || './database/cleanpro.db';
+
+const defaultPassword = process.env.DEFAULT_ADMIN_PASSWORD;
+
+if (!defaultPassword || defaultPassword === 'replace-with-a-strong-local-password') {
+    console.error('ERROR: DEFAULT_ADMIN_PASSWORD must be configured.');
+    process.exit(1);
+}
+
 const SCHEMA_PATH = path.join(__dirname, 'schema.sql');
 
 async function initializeDatabase() {
@@ -64,11 +72,10 @@ async function initializeDatabase() {
                 console.log('✓ Marketing CRM schema created');
 
                 // Create default admin user with hashed password
-                const defaultPassword = process.env.DEFAULT_ADMIN_PASSWORD || 'Admin123!';
-                const passwordHash = await bcrypt.hash(defaultPassword, 10);
+		const passwordHash = await bcrypt.hash(defaultPassword, 10);
 
                 const insertAdmin = `
-                    INSERT OR REPLACE INTO admin_users (username, email, password_hash, full_name, role)
+                    INSERT OR IGNORE INTO admin_users (username, email, password_hash, full_name, role)
                     VALUES (?, ?, ?, ?, ?)
                 `;
 
@@ -81,27 +88,28 @@ async function initializeDatabase() {
                         'System Administrator',
                         'admin'
                     ],
-                    (err) => {
+                    function (err) {
                         if (err) {
                             console.error('❌ Error creating admin user:', err.message);
-                        } else {
+                        } else if (this.changes === 1) {
                             console.log('✓ Default admin user created');
-                            console.log('  Username:', process.env.DEFAULT_ADMIN_USERNAME || 'admin');
-                            console.log('  Password:', defaultPassword);
-                            console.log('  ⚠️  CHANGE THIS PASSWORD AFTER FIRST LOGIN!');
+                        } else {
+                            console.log('✓ Admin user already exists; existing account preserved');
                         }
 
-                        db.close((err) => {
-                            if (err) {
-                                console.error('❌ Error closing database:', err.message);
-                                reject(err);
-                            } else {
-                                console.log('✓ Database connection closed');
-                                console.log('✅ Database initialization complete!');
-                                resolve();
-                            }
-                        });
-                    }
+                        db.close((closeErr) => {
+                        if (closeErr) {
+                            console.error('❌ Error closing database:', closeErr.message);
+                            reject(closeErr);
+                        } else if (err) {
+                        reject(err);
+                        } else {
+                            console.log('✓ Database connection closed');
+                            console.log('✅ Database initialization complete!');
+                            resolve();
+                        }
+                    });
+                }
                 );
             });
         });

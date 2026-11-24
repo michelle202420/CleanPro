@@ -13,6 +13,7 @@ const quoteRoutes = require('./routes/quotes');
 const authRoutes = require('./routes/auth');
 const adminRoutes = require('./routes/admin');
 const prospectRoutes = require('./routes/prospects');
+const path = require('path');
 
 // Security middleware with relaxed CSP for admin tools
 app.use(helmet({
@@ -56,7 +57,7 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/prospects', prospectRoutes);
 
 // Serve static frontend files
-app.use(express.static('./', {
+app.use(express.static(path.join(__dirname, 'public'), {
     index: 'index.html',
     extensions: ['html']
 }));

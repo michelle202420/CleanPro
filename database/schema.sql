@@ -96,16 +96,7 @@ CREATE INDEX IF NOT EXISTS idx_admin_username ON admin_users(username);
 CREATE INDEX IF NOT EXISTS idx_admin_email ON admin_users(email);
 CREATE INDEX IF NOT EXISTS idx_sessions_token ON admin_sessions(session_token);
 
--- Insert default admin user (password: Admin123!)
--- Password hash for 'Admin123!' using bcrypt
-INSERT INTO admin_users (username, email, password_hash, full_name, role) 
-VALUES (
-    'admin',
-    'admin@cleanpro.sk',
-    '$2b$10$rQZ9vXqKX8YxKxKxKxKxKOqKxKxKxKxKxKxKxKxKxKxKxKxKxKxKx', -- This will be replaced with actual hash
-    'System Administrator',
-    'admin'
-);
+
 
 -- Views for easier querying
 
