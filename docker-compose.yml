@@ -1,8 +1,6 @@
 services:
   cleanpro:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/michelle202420/cleanpro:latest
 
     container_name: cleanpro-app
 
